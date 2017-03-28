@@ -1,9 +1,9 @@
 username = xuesong
-password = miami,wade123
+password = miami,wade1234
 private_key = /home/lovixs/.ssh/id_rsa
 hostname = 123.206.79.49
 port = 22
-repository = https://github.com/sxs123/transFile.git6
+repository = https://github.com/sxs123/transFile.git
 keep_releases = 5
 path = /home/xuesong/work/go/src/github.com/sxs123/transFile
 use_sudo = false
