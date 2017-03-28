@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>ddd</title>
+	<meta charset="utf8">
+</head>
+<body>
+	‍‍<select id="pid" onchange="gradeChange()">
+
+    <option grade="1" value="a">选项一</a>
+
+    <option grade="2" value="b">选项二</a>
+
+</select>
+
+<script type="text/JavaScript">
+       function gradeChange(){
+        var objS = document.getElementById("pid");
+        var grade = objS.options[objS.selectedIndex].grade;
+        alert(grade);
+       }
+</script>
+</body>
+</html>
