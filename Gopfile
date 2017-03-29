@@ -6,5 +6,5 @@ port = 22
 repository = https://github.com/sxs123/transFile.git
 keep_releases = 5
 path = /home/xuesong/work/go/src/github.com/sxs123/transFile
-use_sudo = false
+use_sudo = true
 webserver_user = xuesong
