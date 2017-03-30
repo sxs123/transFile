@@ -16,7 +16,7 @@ import (
 )
 
 func root_handler(w http.ResponseWriter, r *http.Request) {
-	fmt.Fprintf(w, "%q", "See you again ,Golang!Thank you Bash Script and Google Daddy!!!!!")
+	fmt.Fprintf(w, "%q", "See you again ,Golang!Thank you Bash Script and Google Daddy!!!!!!!!!!")
 }
 func file_handler(w http.ResponseWriter, r *http.Request) {
 	if r.Method == "GET" {
