@@ -9,7 +9,7 @@ import (
 	// "strconv"
 	// "database/sql"
 	// _ "github.com/go-sql-driver/mysql"
-	"github.com/sxs123/transFile/model"
+	"github.com/sxs123/transFile/current/model"
 	"os"
 	"text/template"
 	"time"
