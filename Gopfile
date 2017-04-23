@@ -8,5 +8,5 @@ keep_releases = 5
 path = /home/xuesong/work/go/src/github.com/sxs123/transFile
 use_sudo = true
 webserver_user = xuesong
-app_name = myserver.go
-processs_name = myserver
+app_name = main.go
+processs_name = main

@@ -46,7 +46,6 @@ func validate_login(w http.ResponseWriter, r *http.Request) {
 }
 
 func login_handler(w http.ResponseWriter, r *http.Request) {
-	validate_login(w, r)
 	if r.Method == "GET" {
 		t, _ := template.ParseFiles("views/login.tpl")
 		t.Execute(w, nil)
