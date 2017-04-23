@@ -1,0 +1,259 @@
+lovixs@lovixs-QTK5:~$ sudo systemctl start redis
+[sudo] lovixs 的密码： 
+lovixs@lovixs-QTK5:~$ cd work/rails_project/wisdomSecretary/
+lovixs@lovixs-QTK5:~/work/rails_project/wisdomSecretary$ rails s
+=> Booting Puma
+=> Rails 5.0.1 application starting in development on http://localhost:3000
+=> Run `rails server -h` for more startup options
+Puma starting in single mode...
+* Version 3.6.2 (ruby 2.3.0-p0), codename: Sleepy Sunday Serenity
+* Min threads: 5, max threads: 5
+* Environment: development
+* Listening on tcp://localhost:3000
+Use Ctrl-C to stop
+^CExiting
+lovixs@lovixs-QTK5:~/work/rails_project/wisdomSecretary$ rails s
+=> Booting Puma
+=> Rails 5.0.1 application starting in development on http://localhost:3000
+=> Run `rails server -h` for more startup options
+Puma starting in single mode...
+* Version 3.6.2 (ruby 2.3.0-p0), codename: Sleepy Sunday Serenity
+* Min threads: 5, max threads: 5
+* Environment: development
+* Listening on tcp://localhost:3000
+Use Ctrl-C to stop
+Started GET "/" for 127.0.0.1 at 2017-04-21 15:40:45 +0800
+Started GET "/" for 127.0.0.1 at 2017-04-21 15:40:46 +0800
+  ActiveRecord::SchemaMigration Load (70.4ms)  SELECT "schema_migrations".* FROM "schema_migrations"
+Processing by SessionsController#new as HTML
+Processing by SessionsController#new as HTML
+  Rendering sessions/new.html.erb within layouts/sessions
+  Rendering sessions/new.html.erb within layouts/sessions
+  Rendered sessions/new.html.erb within layouts/sessions (118.2ms)
+  Rendered sessions/new.html.erb within layouts/sessions (117.5ms)
+Completed 200 OK in 5076ms (Views: 5053.0ms | ActiveRecord: 0.0ms)
+
+
+Completed 500 Internal Server Error in 5092ms (ActiveRecord: 0.0ms)
+
+
+  
+ActionView::Template::Error (can't add a new key into hash during iteration):
+     6:     <%= csrf_meta_tags %>
+     7: 
+     8:     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+     9:     <%= javascript_include_tag 'application-session', 'data-turbolinks-track': 'reload' %>
+    10:   </head>
+    11: <body>
+    12:   <%= yield %>
+  
+app/views/layouts/sessions.html.erb:9:in `_app_views_layouts_sessions_html_erb___1248840476597183627_36731020'
+  Rendering /home/lovixs/.rvm/gems/ruby-2.3.0@rails501/gems/actionpack-5.0.1/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout
+  Rendering /home/lovixs/.rvm/gems/ruby-2.3.0@rails501/gems/actionpack-5.0.1/lib/action_dispatch/middleware/templates/rescues/_source.html.erb
+  Rendered /home/lovixs/.rvm/gems/ruby-2.3.0@rails501/gems/actionpack-5.0.1/lib/action_dispatch/middleware/templates/rescues/_source.html.erb (4.0ms)
+  Rendering /home/lovixs/.rvm/gems/ruby-2.3.0@rails501/gems/actionpack-5.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered /home/lovixs/.rvm/gems/ruby-2.3.0@rails501/gems/actionpack-5.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.0ms)
+  Rendering /home/lovixs/.rvm/gems/ruby-2.3.0@rails501/gems/actionpack-5.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered /home/lovixs/.rvm/gems/ruby-2.3.0@rails501/gems/actionpack-5.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.6ms)
+  Rendered /home/lovixs/.rvm/gems/ruby-2.3.0@rails501/gems/actionpack-5.0.1/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (20.9ms)
+^CExiting
+lovixs@lovixs-QTK5:~/work/rails_project/wisdomSecretary$ rails c
+Running via Spring preloader in process 4485
+Loading development environment (Rails 5.0.1)
+2.3.0 :001 > AutoCompleteItem.all
+  AutoCompleteItem Load (56.4ms)  SELECT "auto_complete_items".* FROM "auto_complete_items"
+ => #<ActiveRecord::Relation [#<AutoCompleteItem id: 1, title: "综合合格率">, #<AutoCompleteItem id: 2, title: "随便什么吧">]> 
+2.3.0 :002 > AutoCompleteItem.first.auto_complete_item_scores
+  AutoCompleteItem Load (53.3ms)  SELECT  "auto_complete_items".* FROM "auto_complete_items" ORDER BY "auto_complete_items"."id" ASC LIMIT $1  [["LIMIT", 1]]
+  AutoCompleteItemScore Load (53.0ms)  SELECT "auto_complete_item_scores".* FROM "auto_complete_item_scores" WHERE "auto_complete_item_scores"."auto_complete_item_id" = $1  [["auto_complete_item_id", 1]]
+ => #<ActiveRecord::Associations::CollectionProxy [#<AutoCompleteItemScore id: 59, auto_complete_item_id: 1, score: #<BigDecimal:73245e0,'0.98E2',9(18)>, check_date: "2017-04-12 00:00:00", created_at: "2017-04-12 05:06:30", updated_at: "2017-04-12 05:06:30">, #<AutoCompleteItemScore id: 60, auto_complete_item_id: 1, score: #<BigDecimal:732ada0,'0.971E2',18(27)>, check_date: "2017-04-11 00:00:00", created_at: "2017-04-12 05:37:23", updated_at: "2017-04-12 05:37:23">]> 
+2.3.0 :003 > AutoCompleteItem.first.auto_complete_item_scores.all.count
+  AutoCompleteItem Load (63.6ms)  SELECT  "auto_complete_items".* FROM "auto_complete_items" ORDER BY "auto_complete_items"."id" ASC LIMIT $1  [["LIMIT", 1]]
+   (50.3ms)  SELECT COUNT(*) FROM "auto_complete_item_scores" WHERE "auto_complete_item_scores"."auto_complete_item_id" = $1  [["auto_complete_item_id", 1]]
+ => 2 
+2.3.0 :004 > AutoCompleteItemScore.all
+^C  AutoCompleteItemScore Load (9512.2ms)  SELECT "auto_complete_item_scores".* FROM "auto_complete_item_scores"
+IRB::Abort: abort then interrupt!
+	from /home/lovixs/.rvm/gems/ruby-2.3.0@rails501/gems/activerecord-5.0.1/lib/active_record/connection_adapters/postgresql_adapter.rb:598:in `async_exec'
+	from /home/lovixs/.rvm/gems/ruby-2.3.0@rails501/gems/activerecord-5.0.1/lib/active_record/connection_adapters/postgresql_adapter.rb:598:in `block in exec_no_cache'
+	from /home/lovixs/.rvm/gems/ruby-2.3.0@rails501/gems/activerecord-5.0.1/lib/active_record/connection_adapters/abstract_adapter.rb:589:in `block in log'
+	from /home/lovixs/.rvm/gems/ruby-2.3.0@rails501/gems/activesupport-5.0.1/lib/active_support/notifications/instrumenter.rb:21:in `instrument'
+	from /home/lovixs/.rvm/gems/ruby-2.3.0@rails501/gems/activerecord-5.0.1/lib/active_record/connection_adapters/abstract_adapter.rb:583:in `log'
+	from /home/lovixs/.rvm/gems/ruby-2.3.0@rails501/gems/activerecord-5.0.1/lib/active_record/connection_adapters/postgresql_adapter.rb:598:in `exec_no_cache'
+	from /home/lovixs/.rvm/gems/ruby-2.3.0@rails501/gems/activerecord-5.0.1/lib/active_record/connection_adapters/postgresql_adapter.rb:585:in `execute_and_clear'
+	from /home/lovixs/.rvm/gems/ruby-2.3.0@rails501/gems/activerecord-5.0.1/lib/active_record/connection_adapters/postgresql/database_statements.rb:103:in `exec_query'
+	from /home/lovixs/.rvm/gems/ruby-2.3.0@rails501/gems/activerecord-5.0.1/lib/active_record/connection_adapters/abstract/database_statements.rb:377:in `select_prepared'
+	from /home/lovixs/.rvm/gems/ruby-2.3.0@rails501/gems/activerecord-5.0.1/lib/active_record/connection_adapters/abstract/database_statements.rb:39:in `select_all'
+	from /home/lovixs/.rvm/gems/ruby-2.3.0@rails501/gems/activerecord-5.0.1/lib/active_record/connection_adapters/abstract/query_cache.rb:95:in `select_all'
+	from /home/lovixs/.rvm/gems/ruby-2.3.0@rails501/gems/activerecord-5.0.1/lib/active_record/querying.rb:39:in `find_by_sql'
+	from /home/lovixs/.rvm/gems/ruby-2.3.0@rails501/gems/activerecord-5.0.1/lib/active_record/relation.rb:702:in `exec_queries'
+	from /home/lovixs/.rvm/gems/ruby-2.3.0@rails501/gems/activerecord-5.0.1/lib/active_record/relation.rb:583:in `load'
+	from /home/lovixs/.rvm/gems/ruby-2.3.0@rails501/gems/activerecord-5.0.1/lib/active_record/relation.rb:260:in `records'
+	from /home/lovixs/.rvm/gems/ruby-2.3.0@rails501/gems/activerecord-5.0.1/lib/active_record/relation.rb:686:in `inspect'
+... 1 levels...
+	from /home/lovixs/.rvm/gems/ruby-2.3.0@rails501/gems/railties-5.0.1/lib/rails/commands/console_helper.rb:9:in `start'
+	from /home/lovixs/.rvm/gems/ruby-2.3.0@rails501/gems/railties-5.0.1/lib/rails/commands/commands_tasks.rb:78:in `console'
+	from /home/lovixs/.rvm/gems/ruby-2.3.0@rails501/gems/railties-5.0.1/lib/rails/commands/commands_tasks.rb:49:in `run_command!'
+	from /home/lovixs/.rvm/gems/ruby-2.3.0@rails501/gems/railties-5.0.1/lib/rails/commands.rb:18:in `<top (required)>'
+	from /home/lovixs/.rvm/gems/ruby-2.3.0@rails501/gems/activesupport-5.0.1/lib/active_support/dependencies.rb:293:in `require'
+	from /home/lovixs/.rvm/gems/ruby-2.3.0@rails501/gems/activesupport-5.0.1/lib/active_support/dependencies.rb:293:in `block in require'
+	from /home/lovixs/.rvm/gems/ruby-2.3.0@rails501/gems/activesupport-5.0.1/lib/active_support/dependencies.rb:259:in `load_dependency'
+	from /home/lovixs/.rvm/gems/ruby-2.3.0@rails501/gems/activesupport-5.0.1/lib/active_support/dependencies.rb:293:in `require'
+	from /home/lovixs/work/rails_project/wisdomSecretary/bin/rails:9:in `<top (required)>'
+	from /home/lovixs/.rvm/gems/ruby-2.3.0@rails501/gems/activesupport-5.0.1/lib/active_support/dependencies.rb:287:in `load'
+	from /home/lovixs/.rvm/gems/ruby-2.3.0@rails501/gems/activesupport-5.0.1/lib/active_support/dependencies.rb:287:in `block in load'
+	from /home/lovixs/.rvm/gems/ruby-2.3.0@rails501/gems/activesupport-5.0.1/lib/active_support/dependencies.rb:259:in `load_dependency'
+	from /home/lovixs/.rvm/gems/ruby-2.3.0@rails501/gems/activesupport-5.0.1/lib/active_support/dependencies.rb:287:in `load'
+	from /home/lovixs/.rvm/rubies/ruby-2.3.0/lib/ruby/2.3.0/rubygems/core_ext/kernel_require.rb:55:in `require'
+	from /home/lovixs/.rvm/rubies/ruby-2.3.0/lib/ruby/2.3.0/rubygems/core_ext/kernel_require.rb:55:in `require'
+	from -e:1:in `<main>'2.3.0 :005 > exit
+lovixs@lovixs-QTK5:~/work/rails_project/wisdomSecretary$ rails s
+=> Booting Puma
+=> Rails 5.0.1 application starting in development on http://localhost:3000
+=> Run `rails server -h` for more startup options
+A server is already running. Check /home/lovixs/work/rails_project/wisdomSecretary/tmp/pids/server.pid.
+Exiting
+lovixs@lovixs-QTK5:~/work/rails_project/wisdomSecretary$ rails c
+Running via Spring preloader in process 4795
+Loading development environment (Rails 5.0.1)
+2.3.0 :001 > AutoCompleteItemScore.all
+  AutoCompleteItemScore Load (41.4ms)  SELECT "auto_complete_item_scores".* FROM "auto_complete_item_scores"
+ => #<ActiveRecord::Relation [#<AutoCompleteItemScore id: 59, auto_complete_item_id: 1, score: #<BigDecimal:6b56890,'0.98E2',9(18)>, check_date: "2017-04-12 00:00:00", created_at: "2017-04-12 05:06:30", updated_at: "2017-04-12 05:06:30">, #<AutoCompleteItemScore id: 60, auto_complete_item_id: 1, score: #<BigDecimal:6b54298,'0.971E2',18(27)>, check_date: "2017-04-11 00:00:00", created_at: "2017-04-12 05:37:23", updated_at: "2017-04-12 05:37:23">]> 
+2.3.0 :002 > AutoCompleteItemScore.first
+  AutoCompleteItemScore Load (56.0ms)  SELECT  "auto_complete_item_scores".* FROM "auto_complete_item_scores" ORDER BY "auto_complete_item_scores"."id" ASC LIMIT $1  [["LIMIT", 1]]
+ => #<AutoCompleteItemScore id: 59, auto_complete_item_id: 1, score: #<BigDecimal:6a14090,'0.98E2',9(18)>, check_date: "2017-04-12 00:00:00", created_at: "2017-04-12 05:06:30", updated_at: "2017-04-12 05:06:30"> 
+2.3.0 :003 > CheckScore.first
+  CheckScore Load (49.4ms)  SELECT  "check_scores".* FROM "check_scores" ORDER BY "check_scores"."id" ASC LIMIT $1  [["LIMIT", 1]]
+ => #<CheckScore id: 1863, check_item_id: 158, score: #<BigDecimal:68f9430,'0.1E3',9(18)>, created_at: "2017-04-12 05:06:30", updated_at: "2017-04-12 05:06:30", user_id: 7, check_date: "2017-04-12 00:00:00", check_item_option_id: 46> 
+2.3.0 :004 > AutoCompleteItemScore.first
+  AutoCompleteItemScore Load (62.1ms)  SELECT  "auto_complete_item_scores".* FROM "auto_complete_item_scores" ORDER BY "auto_complete_item_scores"."id" ASC LIMIT $1  [["LIMIT", 1]]
+ => #<AutoCompleteItemScore id: 59, auto_complete_item_id: 1, score: #<BigDecimal:67b14d8,'0.98E2',9(18)>, check_date: "2017-04-12 00:00:00", created_at: "2017-04-12 05:06:30", updated_at: "2017-04-12 05:06:30"> 
+2.3.0 :005 > auto_complete_item_score = AutoCompleteItemScore.find_by(id:59)
+^C^C^C^X^X^Z
+[1]+  已停止               rails c
+lovixs@lovixs-QTK5:~/work/rails_project/wisdomSecretary$ rails c
+Running via Spring preloader in process 5251
+Loading development environment (Rails 5.0.1)
+2.3.0 :001 > auto_complete_item_score = AutoCompleteItemScore.find_by(id:59)
+  AutoCompleteItemScore Load (46.6ms)  SELECT  "auto_complete_item_scores".* FROM "auto_complete_item_scores" WHERE "auto_complete_item_scores"."id" = $1 LIMIT $2  [["id", 59], ["LIMIT", 1]]
+ => #<AutoCompleteItemScore id: 59, auto_complete_item_id: 1, score: #<BigDecimal:6d1d9d0,'0.98E2',9(18)>, check_date: "2017-04-12 00:00:00", created_at: "2017-04-12 05:06:30", updated_at: "2017-04-12 05:06:30"> 
+2.3.0 :002 > date = auto_complete_item_score.check_date
+ => Wed, 12 Apr 2017 08:00:00 CST +08:00 
+2.3.0 :003 > check_items = auto_complete_item_score.auto_complete_item.check_items
+  AutoCompleteItem Load (68.9ms)  SELECT  "auto_complete_items".* FROM "auto_complete_items" WHERE "auto_complete_items"."id" = $1 LIMIT $2  [["id", 1], ["LIMIT", 1]]
+  CheckItem Load (48.3ms)  SELECT "check_items".* FROM "check_items" WHERE "check_items"."auto_complete_item_id" = $1  [["auto_complete_item_id", 1]]
+ => #<ActiveRecord::Associations::CollectionProxy [#<CheckItem id: 89, name: "及时率", parent_id: 87, percentage: 55, period: nil, description: "", check_item_standard_id: 13, auto_complete_item_id: 1>, #<CheckItem id: 147, name: "及时率", parent_id: 145, percentage: 40, period: nil, description: "", check_item_standard_id: 13, auto_complete_item_id: 1>, #<CheckItem id: 184, name: "及时率", parent_id: 182, percentage: 25, period: nil, description: "", check_item_standard_id: 13, auto_complete_item_id: 1>, #<CheckItem id: 194, name: "及时率", parent_id: 192, percentage: 40, period: nil, description: "", check_item_standard_id: 13, auto_complete_item_id: 1>, #<CheckItem id: 224, name: "及时率", parent_id: 222, percentage: 40, period: nil, description: "", check_item_standard_id: 13, auto_complete_item_id: 1>, #<CheckItem id: 238, name: "及时率", parent_id: 236, percentage: 30, period: nil, description: "", check_item_standard_id: 13, auto_complete_item_id: 1>, #<CheckItem id: 251, name: "及时率", parent_id: 249, percentage: 40, period: nil, description: "", check_item_standard_id: 13, auto_complete_item_id: 1>, #<CheckItem id: 158, name: "及时率", parent_id: 80, percentage: 40, period: nil, description: "", check_item_standard_id: 13, auto_complete_item_id: 1>, #<CheckItem id: 285, name: "及时率", parent_id: 283, percentage: 40, period: nil, description: "", check_item_standard_id: 13, auto_complete_item_id: 1>, #<CheckItem id: 296, name: "及时率", parent_id: 294, percentage: 40, period: nil, description: "", check_item_standard_id: 13, auto_complete_item_id: 1>, ...]> 
+2.3.0 :004 > check_items.joins(:check_scores).where("check_date=?",date)
+  CheckItem Load (68.0ms)  SELECT "check_items".* FROM "check_items" INNER JOIN "check_scores" ON "check_scores"."check_item_id" = "check_items"."id" WHERE "check_items"."auto_complete_item_id" = $1 AND (check_date='2017-04-12 00:00:00')  [["auto_complete_item_id", 1]]
+ => #<ActiveRecord::AssociationRelation [#<CheckItem id: 158, name: "及时率", parent_id: 80, percentage: 40, period: nil, description: "", check_item_standard_id: 13, auto_complete_item_id: 1>, #<CheckItem id: 158, name: "及时率", parent_id: 80, percentage: 40, period: nil, description: "", check_item_standard_id: 13, auto_complete_item_id: 1>, #<CheckItem id: 158, name: "及时率", parent_id: 80, percentage: 40, period: nil, description: "", check_item_standard_id: 13, auto_complete_item_id: 1>, #<CheckItem id: 158, name: "及时率", parent_id: 80, percentage: 40, period: nil, description: "", check_item_standard_id: 13, auto_complete_item_id: 1>, #<CheckItem id: 158, name: "及时率", parent_id: 80, percentage: 40, period: nil, description: "", check_item_standard_id: 13, auto_complete_item_id: 1>, #<CheckItem id: 158, name: "及时率", parent_id: 80, percentage: 40, period: nil, description: "", check_item_standard_id: 13, auto_complete_item_id: 1>, #<CheckItem id: 158, name: "及时率", parent_id: 80, percentage: 40, period: nil, description: "", check_item_standard_id: 13, auto_complete_item_id: 1>, #<CheckItem id: 158, name: "及时率", parent_id: 80, percentage: 40, period: nil, description: "", check_item_standard_id: 13, auto_complete_item_id: 1>, #<CheckItem id: 350, name: "及时率", parent_id: 349, percentage: 55, period: nil, description: "", check_item_standard_id: 13, auto_complete_item_id: 1>, #<CheckItem id: 350, name: "及时率", parent_id: 349, percentage: 55, period: nil, description: "", check_item_standard_id: 13, auto_complete_item_id: 1>, ...]> 
+2.3.0 :005 > check_items.joins(:check_scores).where("check_date=?",date).all.count
+   (154.9ms)  SELECT COUNT(*) FROM "check_items" INNER JOIN "check_scores" ON "check_scores"."check_item_id" = "check_items"."id" WHERE "check_items"."auto_complete_item_id" = $1 AND (check_date='2017-04-12 00:00:00')  [["auto_complete_item_id", 1]]
+ => 11 
+2.3.0 :006 > auto_complete_item_score = AutoCompleteItemScore.find_by(id:60)
+  AutoCompleteItemScore Load (62.5ms)  SELECT  "auto_complete_item_scores".* FROM "auto_complete_item_scores" WHERE "auto_complete_item_scores"."id" = $1 LIMIT $2  [["id", 60], ["LIMIT", 1]]
+ => #<AutoCompleteItemScore id: 60, auto_complete_item_id: 1, score: #<BigDecimal:71e9ec8,'0.971E2',18(27)>, check_date: "2017-04-11 00:00:00", created_at: "2017-04-12 05:37:23", updated_at: "2017-04-12 05:37:23"> 
+2.3.0 :007 > date = auto_complete_item_score.check_date
+ => Tue, 11 Apr 2017 08:00:00 CST +08:00 
+2.3.0 :008 > check_items = auto_complete_item_score.auto_complete_item.check_items
+  AutoCompleteItem Load (68.9ms)  SELECT  "auto_complete_items".* FROM "auto_complete_items" WHERE "auto_complete_items"."id" = $1 LIMIT $2  [["id", 1], ["LIMIT", 1]]
+  CheckItem Load (50.8ms)  SELECT "check_items".* FROM "check_items" WHERE "check_items"."auto_complete_item_id" = $1  [["auto_complete_item_id", 1]]
+ => #<ActiveRecord::Associations::CollectionProxy [#<CheckItem id: 89, name: "及时率", parent_id: 87, percentage: 55, period: nil, description: "", check_item_standard_id: 13, auto_complete_item_id: 1>, #<CheckItem id: 147, name: "及时率", parent_id: 145, percentage: 40, period: nil, description: "", check_item_standard_id: 13, auto_complete_item_id: 1>, #<CheckItem id: 184, name: "及时率", parent_id: 182, percentage: 25, period: nil, description: "", check_item_standard_id: 13, auto_complete_item_id: 1>, #<CheckItem id: 194, name: "及时率", parent_id: 192, percentage: 40, period: nil, description: "", check_item_standard_id: 13, auto_complete_item_id: 1>, #<CheckItem id: 224, name: "及时率", parent_id: 222, percentage: 40, period: nil, description: "", check_item_standard_id: 13, auto_complete_item_id: 1>, #<CheckItem id: 238, name: "及时率", parent_id: 236, percentage: 30, period: nil, description: "", check_item_standard_id: 13, auto_complete_item_id: 1>, #<CheckItem id: 251, name: "及时率", parent_id: 249, percentage: 40, period: nil, description: "", check_item_standard_id: 13, auto_complete_item_id: 1>, #<CheckItem id: 158, name: "及时率", parent_id: 80, percentage: 40, period: nil, description: "", check_item_standard_id: 13, auto_complete_item_id: 1>, #<CheckItem id: 285, name: "及时率", parent_id: 283, percentage: 40, period: nil, description: "", check_item_standard_id: 13, auto_complete_item_id: 1>, #<CheckItem id: 296, name: "及时率", parent_id: 294, percentage: 40, period: nil, description: "", check_item_standard_id: 13, auto_complete_item_id: 1>, ...]> 
+2.3.0 :009 > check_items.joins(:check_scores).where("check_date=?",date)
+  CheckItem Load (66.5ms)  SELECT "check_items".* FROM "check_items" INNER JOIN "check_scores" ON "check_scores"."check_item_id" = "check_items"."id" WHERE "check_items"."auto_complete_item_id" = $1 AND (check_date='2017-04-11 00:00:00')  [["auto_complete_item_id", 1]]
+ => #<ActiveRecord::AssociationRelation [#<CheckItem id: 89, name: "及时率", parent_id: 87, percentage: 55, period: nil, description: "", check_item_standard_id: 13, auto_complete_item_id: 1>, #<CheckItem id: 184, name: "及时率", parent_id: 182, percentage: 25, period: nil, description: "", check_item_standard_id: 13, auto_complete_item_id: 1>, #<CheckItem id: 194, name: "及时率", parent_id: 192, percentage: 40, period: nil, description: "", check_item_standard_id: 13, auto_complete_item_id: 1>, #<CheckItem id: 194, name: "及时率", parent_id: 192, percentage: 40, period: nil, description: "", check_item_standard_id: 13, auto_complete_item_id: 1>, #<CheckItem id: 224, name: "及时率", parent_id: 222, percentage: 40, period: nil, description: "", check_item_standard_id: 13, auto_complete_item_id: 1>, #<CheckItem id: 238, name: "及时率", parent_id: 236, percentage: 30, period: nil, description: "", check_item_standard_id: 13, auto_complete_item_id: 1>, #<CheckItem id: 251, name: "及时率", parent_id: 249, percentage: 40, period: nil, description: "", check_item_standard_id: 13, auto_complete_item_id: 1>, #<CheckItem id: 158, name: "及时率", parent_id: 80, percentage: 40, period: nil, description: "", check_item_standard_id: 13, auto_complete_item_id: 1>, #<CheckItem id: 158, name: "及时率", parent_id: 80, percentage: 40, period: nil, description: "", check_item_standard_id: 13, auto_complete_item_id: 1>, #<CheckItem id: 158, name: "及时率", parent_id: 80, percentage: 40, period: nil, description: "", check_item_standard_id: 13, auto_complete_item_id: 1>, ...]> 
+2.3.0 :010 > check_items.joins(:check_scores).where("check_date=?",date).all.count
+   (54.8ms)  SELECT COUNT(*) FROM "check_items" INNER JOIN "check_scores" ON "check_scores"."check_item_id" = "check_items"."id" WHERE "check_items"."auto_complete_item_id" = $1 AND (check_date='2017-04-11 00:00:00')  [["auto_complete_item_id", 1]]
+ => 21 
+2.3.0 :011 > auto_complete_item_score
+ => #<AutoCompleteItemScore id: 60, auto_complete_item_id: 1, score: #<BigDecimal:71e9ec8,'0.971E2',18(27)>, check_date: "2017-04-11 00:00:00", created_at: "2017-04-12 05:37:23", updated_at: "2017-04-12 05:37:23"> 
+2.3.0 :012 > auto_complete_item_score = AutoCompleteItemScore.find_by(id:59)  AutoCompleteItemScore Load (79.8ms)  SELECT  "auto_complete_item_scores".* FROM "auto_complete_item_scores" WHERE "auto_complete_item_scores"."id" = $1 LIMIT $2  [["id", 59], ["LIMIT", 1]]
+ => #<AutoCompleteItemScore id: 59, auto_complete_item_id: 1, score: #<BigDecimal:6cfb6f0,'0.98E2',9(18)>, check_date: "2017-04-12 00:00:00", created_at: "2017-04-12 05:06:30", updated_at: "2017-04-12 05:06:30"> 
+2.3.0 :013 > CheckScore.all.count
+   (45.4ms)  SELECT COUNT(*) FROM "check_scores"
+ => 54 
+2.3.0 :014 > auto_complete_item_score = AutoCompleteItemScore.find_by(id:id)
+NameError: undefined local variable or method `id' for main:Object
+	from (irb):14
+	from /home/lovixs/.rvm/gems/ruby-2.3.0@rails501/gems/railties-5.0.1/lib/rails/commands/console.rb:65:in `start'
+	from /home/lovixs/.rvm/gems/ruby-2.3.0@rails501/gems/railties-5.0.1/lib/rails/commands/console_helper.rb:9:in `start'
+	from /home/lovixs/.rvm/gems/ruby-2.3.0@rails501/gems/railties-5.0.1/lib/rails/commands/commands_tasks.rb:78:in `console'
+	from /home/lovixs/.rvm/gems/ruby-2.3.0@rails501/gems/railties-5.0.1/lib/rails/commands/commands_tasks.rb:49:in `run_command!'
+	from /home/lovixs/.rvm/gems/ruby-2.3.0@rails501/gems/railties-5.0.1/lib/rails/commands.rb:18:in `<top (required)>'
+	from /home/lovixs/.rvm/gems/ruby-2.3.0@rails501/gems/activesupport-5.0.1/lib/active_support/dependencies.rb:293:in `require'
+	from /home/lovixs/.rvm/gems/ruby-2.3.0@rails501/gems/activesupport-5.0.1/lib/active_support/dependencies.rb:293:in `block in require'
+	from /home/lovixs/.rvm/gems/ruby-2.3.0@rails501/gems/activesupport-5.0.1/lib/active_support/dependencies.rb:259:in `load_dependency'
+	from /home/lovixs/.rvm/gems/ruby-2.3.0@rails501/gems/activesupport-5.0.1/lib/active_support/dependencies.rb:293:in `require'
+	from /home/lovixs/work/rails_project/wisdomSecretary/bin/rails:9:in `<top (required)>'
+	from /home/lovixs/.rvm/gems/ruby-2.3.0@rails501/gems/activesupport-5.0.1/lib/active_support/dependencies.rb:287:in `load'
+	from /home/lovixs/.rvm/gems/ruby-2.3.0@rails501/gems/activesupport-5.0.1/lib/active_support/dependencies.rb:287:in `block in load'
+	from /home/lovixs/.rvm/gems/ruby-2.3.0@rails501/gems/activesupport-5.0.1/lib/active_support/dependencies.rb:259:in `load_dependency'
+	from /home/lovixs/.rvm/gems/ruby-2.3.0@rails501/gems/activesupport-5.0.1/lib/active_support/dependencies.rb:287:in `load'
+	from /home/lovixs/.rvm/gems/ruby-2.3.0@rails501/gems/spring-2.0.1/lib/spring/commands/rails.rb:6:in `call'
+	from /home/lovixs/.rvm/gems/ruby-2.3.0@rails501/gems/spring-2.0.1/lib/spring/command_wrapper.rb:38:in `call'
+	from /home/lovixs/.rvm/gems/ruby-2.3.0@rails501/gems/spring-2.0.1/lib/spring/application.rb:191:in `block in serve'
+	from /home/lovixs/.rvm/gems/ruby-2.3.0@rails501/gems/spring-2.0.1/lib/spring/application.rb:161:in `fork'
+	from /home/lovixs/.rvm/gems/ruby-2.3.0@rails501/gems/spring-2.0.1/lib/spring/application.rb:161:in `serve'
+	from /home/lovixs/.rvm/gems/ruby-2.3.0@rails501/gems/spring-2.0.1/lib/spring/application.rb:131:in `block in run'
+	from /home/lovixs/.rvm/gems/ruby-2.3.0@rails501/gems/spring-2.0.1/lib/spring/application.rb:125:in `loop'
+	from /home/lovixs/.rvm/gems/ruby-2.3.0@rails501/gems/spring-2.0.1/lib/spring/application.rb:125:in `run'
+	from /home/lovixs/.rvm/gems/ruby-2.3.0@rails501/gems/spring-2.0.1/lib/spring/application/boot.rb:19:in `<top (required)>'
+	from /home/lovixs/.rvm/rubies/ruby-2.3.0/lib/ruby/2.3.0/rubygems/core_ext/kernel_require.rb:55:in `require'
+	from /home/lovixs/.rvm/rubies/ruby-2.3.0/lib/ruby/2.3.0/rubygems/core_ext/kernel_require.rb:55:in `require'
+	from -e:1:in `<main>'2.3.0 :015 > ^C
+2.3.0 :015 > auto_complete_item_score = AutoCompleteItemScore.find_by(id:59)
+  AutoCompleteItemScore Load (62.2ms)  SELECT  "auto_complete_item_scores".* FROM "auto_complete_item_scores" WHERE "auto_complete_item_scores"."id" = $1 LIMIT $2  [["id", 59], ["LIMIT", 1]]
+ => #<AutoCompleteItemScore id: 59, auto_complete_item_id: 1, score: #<BigDecimal:61db888,'0.98E2',9(18)>, check_date: "2017-04-12 00:00:00", created_at: "2017-04-12 05:06:30", updated_at: "2017-04-12 05:06:30"> 
+2.3.0 :016 > date = auto_complete_item_score.check_date
+ => Wed, 12 Apr 2017 08:00:00 CST +08:00 
+2.3.0 :017 > check_items = auto_complete_item_score.auto_complete_item.check_items
+  AutoCompleteItem Load (63.4ms)  SELECT  "auto_complete_items".* FROM "auto_complete_items" WHERE "auto_complete_items"."id" = $1 LIMIT $2  [["id", 1], ["LIMIT", 1]]
+  CheckItem Load (48.5ms)  SELECT "check_items".* FROM "check_items" WHERE "check_items"."auto_complete_item_id" = $1  [["auto_complete_item_id", 1]]
+ => #<ActiveRecord::Associations::CollectionProxy [#<CheckItem id: 89, name: "及时率", parent_id: 87, percentage: 55, period: nil, description: "", check_item_standard_id: 13, auto_complete_item_id: 1>, #<CheckItem id: 147, name: "及时率", parent_id: 145, percentage: 40, period: nil, description: "", check_item_standard_id: 13, auto_complete_item_id: 1>, #<CheckItem id: 184, name: "及时率", parent_id: 182, percentage: 25, period: nil, description: "", check_item_standard_id: 13, auto_complete_item_id: 1>, #<CheckItem id: 194, name: "及时率", parent_id: 192, percentage: 40, period: nil, description: "", check_item_standard_id: 13, auto_complete_item_id: 1>, #<CheckItem id: 224, name: "及时率", parent_id: 222, percentage: 40, period: nil, description: "", check_item_standard_id: 13, auto_complete_item_id: 1>, #<CheckItem id: 238, name: "及时率", parent_id: 236, percentage: 30, period: nil, description: "", check_item_standard_id: 13, auto_complete_item_id: 1>, #<CheckItem id: 251, name: "及时率", parent_id: 249, percentage: 40, period: nil, description: "", check_item_standard_id: 13, auto_complete_item_id: 1>, #<CheckItem id: 158, name: "及时率", parent_id: 80, percentage: 40, period: nil, description: "", check_item_standard_id: 13, auto_complete_item_id: 1>, #<CheckItem id: 285, name: "及时率", parent_id: 283, percentage: 40, period: nil, description: "", check_item_standard_id: 13, auto_complete_item_id: 1>, #<CheckItem id: 296, name: "及时率", parent_id: 294, percentage: 40, period: nil, description: "", check_item_standard_id: 13, auto_complete_item_id: 1>, ...]> 
+2.3.0 :018 > check_items.joins(:check_scores).where("check_date=?",date).delete_all
+  SQL (71.5ms)  DELETE FROM "check_items" WHERE "check_items"."id" IN (SELECT "check_items"."id" FROM "check_items" INNER JOIN "check_scores" ON "check_scores"."check_item_id" = "check_items"."id" WHERE "check_items"."auto_complete_item_id" = $1 AND (check_date='2017-04-12 00:00:00'))  [["auto_complete_item_id", 1]]
+ => 2 
+2.3.0 :019 > check_items.joins(:check_scores).where("check_date=?",date)
+  CheckItem Load (61.5ms)  SELECT "check_items".* FROM "check_items" INNER JOIN "check_scores" ON "check_scores"."check_item_id" = "check_items"."id" WHERE "check_items"."auto_complete_item_id" = $1 AND (check_date='2017-04-12 00:00:00')  [["auto_complete_item_id", 1]]
+ => #<ActiveRecord::AssociationRelation []> 
+2.3.0 :020 > check_items = auto_complete_item_score.auto_complete_item.check_items
+ => #<ActiveRecord::Associations::CollectionProxy [#<CheckItem id: 89, name: "及时率", parent_id: 87, percentage: 55, period: nil, description: "", check_item_standard_id: 13, auto_complete_item_id: 1>, #<CheckItem id: 147, name: "及时率", parent_id: 145, percentage: 40, period: nil, description: "", check_item_standard_id: 13, auto_complete_item_id: 1>, #<CheckItem id: 184, name: "及时率", parent_id: 182, percentage: 25, period: nil, description: "", check_item_standard_id: 13, auto_complete_item_id: 1>, #<CheckItem id: 194, name: "及时率", parent_id: 192, percentage: 40, period: nil, description: "", check_item_standard_id: 13, auto_complete_item_id: 1>, #<CheckItem id: 224, name: "及时率", parent_id: 222, percentage: 40, period: nil, description: "", check_item_standard_id: 13, auto_complete_item_id: 1>, #<CheckItem id: 238, name: "及时率", parent_id: 236, percentage: 30, period: nil, description: "", check_item_standard_id: 13, auto_complete_item_id: 1>, #<CheckItem id: 251, name: "及时率", parent_id: 249, percentage: 40, period: nil, description: "", check_item_standard_id: 13, auto_complete_item_id: 1>, #<CheckItem id: 158, name: "及时率", parent_id: 80, percentage: 40, period: nil, description: "", check_item_standard_id: 13, auto_complete_item_id: 1>, #<CheckItem id: 285, name: "及时率", parent_id: 283, percentage: 40, period: nil, description: "", check_item_standard_id: 13, auto_complete_item_id: 1>, #<CheckItem id: 296, name: "及时率", parent_id: 294, percentage: 40, period: nil, description: "", check_item_standard_id: 13, auto_complete_item_id: 1>, ...]> 
+2.3.0 :021 > check_items = auto_complete_item_score.auto_complete_item.check_items.all.count
+   (123.7ms)  SELECT COUNT(*) FROM "check_items" WHERE "check_items"."auto_complete_item_id" = $1  [["auto_complete_item_id", 1]]
+ => 11 
+2.3.0 :022 > check_items.joins(:check_scores).where("check_date=?",date)
+NoMethodError: undefined method `joins' for 11:Fixnum
+	from /home/lovixs/.rvm/gems/ruby-2.3.0@rails501/gems/whenever-0.9.7/lib/whenever/numeric.rb:10:in `method_missing'
+	from (irb):22
+	from /home/lovixs/.rvm/gems/ruby-2.3.0@rails501/gems/railties-5.0.1/lib/rails/commands/console.rb:65:in `start'
+	from /home/lovixs/.rvm/gems/ruby-2.3.0@rails501/gems/railties-5.0.1/lib/rails/commands/console_helper.rb:9:in `start'
+	from /home/lovixs/.rvm/gems/ruby-2.3.0@rails501/gems/railties-5.0.1/lib/rails/commands/commands_tasks.rb:78:in `console'
+	from /home/lovixs/.rvm/gems/ruby-2.3.0@rails501/gems/railties-5.0.1/lib/rails/commands/commands_tasks.rb:49:in `run_command!'
+	from /home/lovixs/.rvm/gems/ruby-2.3.0@rails501/gems/railties-5.0.1/lib/rails/commands.rb:18:in `<top (required)>'
+	from /home/lovixs/.rvm/gems/ruby-2.3.0@rails501/gems/activesupport-5.0.1/lib/active_support/dependencies.rb:293:in `require'
+	from /home/lovixs/.rvm/gems/ruby-2.3.0@rails501/gems/activesupport-5.0.1/lib/active_support/dependencies.rb:293:in `block in require'
+	from /home/lovixs/.rvm/gems/ruby-2.3.0@rails501/gems/activesupport-5.0.1/lib/active_support/dependencies.rb:259:in `load_dependency'
+	from /home/lovixs/.rvm/gems/ruby-2.3.0@rails501/gems/activesupport-5.0.1/lib/active_support/dependencies.rb:293:in `require'
+	from /home/lovixs/work/rails_project/wisdomSecretary/bin/rails:9:in `<top (required)>'
+	from /home/lovixs/.rvm/gems/ruby-2.3.0@rails501/gems/activesupport-5.0.1/lib/active_support/dependencies.rb:287:in `load'
+	from /home/lovixs/.rvm/gems/ruby-2.3.0@rails501/gems/activesupport-5.0.1/lib/active_support/dependencies.rb:287:in `block in load'
+	from /home/lovixs/.rvm/gems/ruby-2.3.0@rails501/gems/activesupport-5.0.1/lib/active_support/dependencies.rb:259:in `load_dependency'
+	from /home/lovixs/.rvm/gems/ruby-2.3.0@rails501/gems/activesupport-5.0.1/lib/active_support/dependencies.rb:287:in `load'
+	from /home/lovixs/.rvm/gems/ruby-2.3.0@rails501/gems/spring-2.0.1/lib/spring/commands/rails.rb:6:in `call'
+	from /home/lovixs/.rvm/gems/ruby-2.3.0@rails501/gems/spring-2.0.1/lib/spring/command_wrapper.rb:38:in `call'
+	from /home/lovixs/.rvm/gems/ruby-2.3.0@rails501/gems/spring-2.0.1/lib/spring/application.rb:191:in `block in serve'
+	from /home/lovixs/.rvm/gems/ruby-2.3.0@rails501/gems/spring-2.0.1/lib/spring/application.rb:161:in `fork'
+	from /home/lovixs/.rvm/gems/ruby-2.3.0@rails501/gems/spring-2.0.1/lib/spring/application.rb:161:in `serve'
+	from /home/lovixs/.rvm/gems/ruby-2.3.0@rails501/gems/spring-2.0.1/lib/spring/application.rb:131:in `block in run'
+	from /home/lovixs/.rvm/gems/ruby-2.3.0@rails501/gems/spring-2.0.1/lib/spring/application.rb:125:in `loop'
+	from /home/lovixs/.rvm/gems/ruby-2.3.0@rails501/gems/spring-2.0.1/lib/spring/application.rb:125:in `run'
+	from /home/lovixs/.rvm/gems/ruby-2.3.0@rails501/gems/spring-2.0.1/lib/spring/application/boot.rb:19:in `<top (required)>'
+	from /home/lovixs/.rvm/rubies/ruby-2.3.0/lib/ruby/2.3.0/rubygems/core_ext/kernel_require.rb:55:in `require'
+	from /home/lovixs/.rvm/rubies/ruby-2.3.0/lib/ruby/2.3.0/rubygems/core_ext/kernel_require.rb:55:in `require'
+	from -e:1:in `<main>'2.3.0 :023 > ^C
+2.3.0 :023 > auto_complete_item_score = AutoCompleteItemScore.find_by(id:59)
+  AutoCompleteItemScore Load (62.2ms)  SELECT  "auto_complete_item_scores".* FROM "auto_complete_item_scores" WHERE "auto_complete_item_scores"."id" = $1 LIMIT $2  [["id", 59], ["LIMIT", 1]]
+ => #<AutoCompleteItemScore id: 59, auto_complete_item_id: 1, score: #<BigDecimal:61e7598,'0.98E2',9(18)>, check_date: "2017-04-12 00:00:00", created_at: "2017-04-12 05:06:30", updated_at: "2017-04-12 05:06:30"> 
+2.3.0 :024 > CheckScore.all.count
+   (61.1ms)  SELECT COUNT(*) FROM "check_scores"
+ => 54 
+2.3.0 :025 > 

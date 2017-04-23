@@ -11,7 +11,7 @@ import (
 	// "database/sql"
 	// _ "github.com/go-sql-driver/mysql"
 	// "github.com/astaxie/beego/session"
-	"github.com/sxs123/transFile/current/model"
+	"github.com/sxs123/transFile/model"
 	"os"
 	"text/template"
 	"time"

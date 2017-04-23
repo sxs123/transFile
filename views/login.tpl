@@ -21,7 +21,7 @@
                         <h3 class="panel-title">登录</h3>
                     </div>
                     <div class="panel-body">
-                        <form role="form" action="http://127.0.0.1:3000/login" method="post">
+                        <form role="form" action="/login" method="post">
                             <fieldset>
 	                           	<form >
 	                                <div class="form-group">
