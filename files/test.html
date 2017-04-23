@@ -8,6 +8,7 @@
     second: <input name="rval" id="23"><br>
     third: <input name="rval" id="3">
     <button type="button" onclick="rkh_score()">提交</button>
+    <button type="button" onclick="strint()">strint</button>
     <script type="text/javascript">
     	function rkh_score(){
 		    var els = document.getElementsByName("rval");
@@ -15,6 +16,13 @@
 				alert(els[i].id);
 				}
 		  }
+		 function strint(){
+		 	if("200" === 200){
+		 		alert("string is equal with int")
+		 	}else{
+		 		alert("not equal")
+		 	}
+		 }
     </script>
 </body>
 </html>

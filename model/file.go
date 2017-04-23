@@ -14,8 +14,6 @@ type File struct {
 	Created_at string
 }
 
-var db sql.DB
-
 func NewFile() *File {
 	return &File{}
 }
@@ -43,6 +41,7 @@ func (this *File) Create() error {
 	// fmt.Println(id)
 	return nil
 }
+
 func Get() ([]File, error) {
 	db, err := sql.Open("mysql", "sxuesong:miami,wade123@tcp(123.206.79.49:3306)/fileserve?charset=utf8")
 	if err != nil {
@@ -65,4 +64,28 @@ func Get() ([]File, error) {
 	}
 	db.Close()
 	return objs, nil
+}
+
+func DestroyOne(id int) error {
+	db, err := sql.Open("mysql", "sxuesong:miami,wade123@tcp(123.206.79.49:3306)/fileserve?charset=utf8")
+	if err != nil {
+		return fmt.Errorf("database open error,details:%v", err)
+	}
+	defer db.Close()
+	stmt, _ := db.Prepare("delete from files where id=?")
+	res, err := stmt.Exec(id)
+	if err != nil {
+		return err
+	}
+	if _, err := res.RowsAffected(); err != nil {
+		return err
+	}
+	return nil
+
+}
+
+func checkErr(err error) {
+	if err != nil {
+		panic(err)
+	}
 }

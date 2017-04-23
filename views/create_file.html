@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>上传文件</title>
+	<meta charset="utf-8">
+	<script type="text/javascript" src="/static/jquery.min.js"></script>
+	<script type="text/javascript" src="/static/bootstrap/js/bootstrap.min.js"></script>
+	<link href="/static/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
+	<link rel="stylesheet" type="text/css" href="/static/css/common.css"></head>
+</head>
+<body>
+<div class="container col-xs-8 col-xs-offset-2">
+	<div class="row">
+		<div class="col-xs-12 header">
+			<h2>上传文件</h2>
+		</div>
+	</div>
+	<div class="row movedown" style="margin-left: 15%;">
+		<form action="http://127.0.0.1:3000/create_file" enctype="multipart/form-data" method="post">
+			<label for="uploadfile">选择文件</label>
+			<input style="width: 100;" type="file" name="uploadfile">
+			<input class="btn btn-primary col-xs-8 movedown" type="submit" value="提交">
+		</form>
+	</div>
+</div>
+</body>
+</html>
